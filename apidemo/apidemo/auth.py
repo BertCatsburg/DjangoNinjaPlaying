@@ -16,7 +16,14 @@ class APIKeyAuth(APIKeyHeader):
     param_name = "X-API-Key"
 
     def authenticate(self, request, key):
-        if key == "111":
-            return key
 
-        return None
+        foundkey = list(filter(lambda x: x['key'] == key, apikeys))
+        print(f"foundkey = {foundkey}")
+
+        if len(foundkey) == 0:
+            # Then we have NOT found a matching key
+            return None
+
+        print(f'This is customer {foundkey[0]["name"]}')
+        return foundkey
+
