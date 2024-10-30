@@ -7,5 +7,5 @@ def index(request):
     return {"a": "AAA"}
 
 @router.get('/x')
-def index(request):
+def x_endpoint(request):
     return {"x": "XXX"}
