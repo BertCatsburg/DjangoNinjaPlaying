@@ -1,6 +1,6 @@
-from ninja import NinjaAPI  #, Redoc
+from ninja import NinjaAPI  # , Redoc
 from kpi.api import router as kpi_router
-from .auth import APIKeyAuth
+from .auth import APIKeyAuth, APIKeyAuth2
 from ninja.throttling import AnonRateThrottle, AuthRateThrottle
 
 
@@ -13,4 +13,4 @@ api = NinjaAPI(
     # docs=Redoc(),
 )
 
-api.add_router("/kpi/", kpi_router, auth=APIKeyAuth())
+api.add_router("/kpi/", kpi_router, auth=[APIKeyAuth(), APIKeyAuth2()])
